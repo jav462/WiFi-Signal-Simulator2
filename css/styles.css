@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111827;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #1f2937;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #374151;
+}
+
+header h1 {
+    color: #38bdf8;
+    margin-bottom: 8px;
+}
+
+/* =====================================
+   DISTRIBUCIÓN: TRES COLUMNAS
+===================================== */
+
+main {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+}
+
+hr {
+    border: 1px solid #374151;
+    margin: 20px 0;
+}
+
+/* ---------- BOTONES ---------- */
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+button.secondary {
+    background-color: #334155;
+}
+
+button.secondary:hover {
+    background-color: #475569;
+}
+
+/* ---------- COLUMNA IZQUIERDA ---------- */
+
+.toolbar {
+    width: 220px;
+    flex-shrink: 0;
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.toolbar h2,
+.workspace h2 {
+    margin-bottom: 20px;
+}
+
+.toolbar h3 {
+    margin-bottom: 12px;
+    color: #38bdf8;
+}
+
+.toolbar p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #cbd5e1;
+}
+
+.toolbar label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #e2e8f0;
+}
+
+.toolbar select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    background-color: #0f172a;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 5px;
+}
+
+.toolbar button {
+    transition: 0.2s;
+}
+
+.toolbar button.active {
+    background-color: #0891b2;
+    outline: 2px solid #38bdf8;
+}
+
+/* ---------- COLUMNA CENTRAL ---------- */
+
+.workspace {
+    flex: 1;
+    min-width: 0;
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.workspace canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background-color: #0f172a;
+    border: 1px solid #475569;
+    cursor: crosshair;
+}
+
+/* ---------- LEYENDA DEL MAPA DE CALOR ---------- */
+
+.heatmap-legend {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #1e293b;
+    border-radius: 8px;
+    color: white;
+}
+
+.heatmap-legend h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.legend-gradient {
+    height: 16px;
+    border-radius: 4px;
+    background: linear-gradient(
+        90deg,
+        hsl(0, 85%, 45%),
+        hsl(60, 85%, 45%),
+        hsl(120, 85%, 45%)
+    );
+}
+
+.legend-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+/* ---------- COLUMNA DERECHA ---------- */
+
+.properties-panel {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.properties-panel h2 {
+    color: #38bdf8;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.properties-panel p {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.properties-panel label {
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+.properties-panel input,
+.properties-panel select {
+    width: 100%;
+    padding: 9px;
+    margin: 8px 0 14px;
+    border: 1px solid #475569;
+    border-radius: 5px;
+    background-color: #0f172a;
+    color: white;
+}
+
+.properties-panel input[type="checkbox"] {
+    width: auto;
+    margin: 0 8px 0 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.properties-panel hr {
+    margin: 18px 0;
+}
+
+/* ---------- LISTA DE ROUTERS ---------- */
+
+#routerList {
+    background-color: #0f172a;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.router-item {
+    background-color: #334155;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.router-item:hover {
+    background-color: #475569;
+}
+
+.router-item.selected {
+    background-color: #075985;
+    border: 2px solid #38bdf8;
+}
+
+.router-item small {
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+/* ---------- RESULTADOS DE MEDICIÓN ---------- */
+
+.signal-result {
+    background-color: #0f172a;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #38bdf8;
+}
+
+.signal-result h3 {
+    color: #38bdf8;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.signal-result p {
+    font-size: 13px;
+    margin: 6px 0;
+    color: #e2e8f0;
+}
+
+.signal-result strong {
+    color: #4ade80;
+}
+
+/* ---------- ETIQUETA FLOTANTE ---------- */
+
+.tooltip {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    background-color: #0f172a;
+    border: 1px solid #38bdf8;
+    color: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.tooltip.hidden {
+    display: none;
+}
+
+/* ---------- PANTALLAS PEQUEÑAS ---------- */
+
+@media (max-width: 1100px) {
+    main {
+        flex-wrap: wrap;
+    }
+
+    .toolbar {
+        width: 200px;
+    }
+
+    .workspace {
+        min-width: 400px;
+    }
+
+    .properties-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    main {
+        flex-direction: column;
+    }
+
+    .toolbar,
+    .workspace,
+    .properties-panel {
+        width: 100%;
+        min-width: 0;
+    }
+}

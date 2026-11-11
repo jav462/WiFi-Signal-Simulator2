@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WiFi Signal Simulator</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>WiWave</h1>
+    <p>Simulador de propagación de señales inalámbricas</p>
+</header>
+
+<main>
+
+    <!-- COLUMNA IZQUIERDA: HERRAMIENTAS -->
+    <section class="toolbar">
+
+        <h2>Herramientas</h2>
+
+        <button id="btnSelect">Seleccionar</button>
+        <button id="btnRouter">Agregar router</button>
+        <button id="btnMoveRouter">Mover router</button>
+        <button id="btnWall">Dibujar pared</button>
+        <button id="btnChangeWallMaterial">Cambiar material</button>
+
+        <label for="wallMaterial">Material de pared:</label>
+        <select id="wallMaterial">
+            <option value="wood">Madera</option>
+            <option value="brick">Ladrillo</option>
+            <option value="concrete">Hormigón</option>
+        </select>
+
+        <button id="btnDelete">Eliminar pared o router</button>
+        <button id="btnClear">Limpiar plano</button>
+        <button id="btnMeasure">Medir señal</button>
+        <button id="btnHeatmap">Mapa de calor</button>
+
+        <hr>
+
+        <h3>Modelo de propagación</h3>
+
+        <label for="environmentSelect">Entorno:</label>
+        <select id="environmentSelect">
+            <option value="free">Espacio libre (n = 2.0)</option>
+            <option value="open">Oficina abierta (n = 2.8)</option>
+            <option value="indoor" selected>Interior típico (n = 3.0)</option>
+            <option value="dense">Interior denso (n = 3.5)</option>
+        </select>
+
+        <label for="scaleSelect">Escala (cada cuadro):</label>
+        <select id="scaleSelect">
+            <option value="0.5">0.5 m</option>
+            <option value="1" selected>1 m</option>
+            <option value="2">2 m</option>
+            <option value="5">5 m</option>
+        </select>
+
+        <hr>
+
+        <h3>Plano</h3>
+
+        <button id="btnSave" class="secondary">Guardar plano</button>
+        <button id="btnLoad" class="secondary">Cargar plano</button>
+        <button id="btnExport" class="secondary">Exportar imagen</button>
+        <input type="file" id="fileInput" accept="application/json,.json" hidden>
+
+        <hr>
+
+        <h3>Información</h3>
+
+        <p id="coordinates">X: 0.0 m | Y: 0.0 m</p>
+        <p id="wallCount">Paredes: 0</p>
+        <p id="routerCount">Routers: 0</p>
+
+    </section>
+
+
+    <!-- COLUMNA CENTRAL: PLANO -->
+    <section class="workspace">
+
+        <h2>Plano de simulación</h2>
+
+        <canvas id="simulationCanvas"
+                width="800"
+                height="500">
+        </canvas>
+
+        <div class="heatmap-legend">
+            <h3>Intensidad de señal WiFi (dBm)</h3>
+
+            <div class="legend-gradient"></div>
+
+            <div class="legend-scale">
+                <span>-90 · Muy débil</span>
+                <span>-65 · Aceptable</span>
+                <span>-40 · Excelente</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- COLUMNA DERECHA: PANEL DE INFORMACIÓN -->
+    <aside class="properties-panel">
+
+        <h2>Gestión de routers</h2>
+
+        <div id="routerList">
+            <p>No hay routers registrados.</p>
+        </div>
+
+        <hr>
+
+        <h2>Propiedades del router</h2>
+
+        <div id="routerProperties">
+            <p>Selecciona un router para configurarlo.</p>
+        </div>
+
+        <hr>
+
+        <h2>Medición de señal</h2>
+
+        <div id="signalResults">
+            <p>Selecciona la herramienta Medir señal y haz clic en el plano.</p>
+        </div>
+
+        <hr>
+
+        <h2>Estadísticas</h2>
+
+        <p id="statsRouterCount">Routers: 0</p>
+        <p id="statsWallCount">Paredes: 0</p>
+
+        <hr>
+
+        <h2>Estado del simulador</h2>
+
+        <p id="activeToolInfo">Herramienta: Seleccionar</p>
+        <p id="heatmapInfo">Mapa de calor: Desactivado</p>
+
+    </aside>
+
+</main>
+
+<!-- Etiqueta flotante con la señal bajo el cursor -->
+<div id="tooltip" class="tooltip hidden"></div>
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
